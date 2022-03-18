@@ -1,0 +1,19 @@
+{
+  "name": "bestwave",
+  "version": "1.0.0",
+  "description": "Search for your best beach and time to surf ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcusvbrangel/bestwave.git"
+  },
+  "author": "Marcus Rangel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcusvbrangel/bestwave/issues"
+  },
+  "homepage": "https://github.com/marcusvbrangel/bestwave#readme"
+}
