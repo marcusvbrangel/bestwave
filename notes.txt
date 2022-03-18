@@ -45,13 +45,27 @@ npm install -D @types/supertest
 
 npm run test:functional
 
+npm install express
+
+npm install body-parser
+
+npm install @overnightjs/core
+
+npm install -D @types/express
+
+
 
 
 ------------------------------------------------------------------------------------------------
 
 
+7a0a60c (HEAD -> develop, origin/develop) Merge pull request #6 from marcusvbrangel/feature/jest
+
+* 9a31dce (HEAD -> develop) chore: add and config jest and supertest
 
 ------------------------------------------------------------------------------------------------
+
+npm run test:functional
 
 
 

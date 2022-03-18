@@ -1,17 +1,17 @@
+import { Controller, Get } from '@overnightjs/core';
+import { Request, Response } from 'express';
 
-describe('Beach forecast - Functional Tests', () => {
+@Controller('forecast')
+export class ForecastController {
 
-  it('should return a forecast with just a few times', async () => {
+  @Get('')
+  public getForecastForLoggedUser(_: Request, res: Response): void {
 
-    const { body, status } = await global.testRequest.get('/forecast');
+    res.send(forecast);
 
-    expect(status).toBe(200);
+  }
 
-    expect(body).toEqual(forecast);
-
-  });
-
-});
+}
 
 const forecast = [
 
