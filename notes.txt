@@ -29,6 +29,10 @@ npm run lint
 
 npm run lint:fix
 
+npm install -D ts-node-dev
+
+npm run start:dev
+
 
 
 ------------------------------------------------------------------------------------------------

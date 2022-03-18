@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "start:dev": "ts-node-dev 'src/index.ts' ",
     "start": "npm run build && node dist/src/index.js",
     "lint": "eslint ./src ./test --ext .ts",
     "lint:fix": "eslint ./src ./test --ext .ts --fix",
@@ -26,6 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
     "eslint": "^8.11.0",
+    "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.2"
   },
   "dependencies": {
