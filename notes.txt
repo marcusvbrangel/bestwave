@@ -33,6 +33,18 @@ npm install -D ts-node-dev
 
 npm run start:dev
 
+npm install -D jest
+
+npm install -D ts-jest
+
+npm install -D @types/jest
+
+npm install -D supertest
+
+npm install -D @types/supertest
+
+npm run test:functional
+
 
 
 ------------------------------------------------------------------------------------------------
