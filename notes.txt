@@ -15,9 +15,9 @@ npm install module-alias
 
 npm install -D @types/module-alias
 
-npm run build
+npm run build         (yarn build)
 
-npm start
+npm start                (yarn start)
 
 npm install -D @typescript-eslint/eslint-plugin
 
@@ -25,13 +25,13 @@ npm install -D eslint
 
 npm install -D @typescript-eslint/parser
 
-npm run lint
+npm run lint           (yarn lint)
 
-npm run lint:fix
+npm run lint:fix    (yarn lint:fix)
 
 npm install -D ts-node-dev
 
-npm run start:dev
+npm run start:dev         (yarn start:dev)
 
 npm install -D jest
 
@@ -43,7 +43,7 @@ npm install -D supertest
 
 npm install -D @types/supertest
 
-npm run test:functional
+npm run test:functional    (yarn test:functional)
 
 npm install express
 
@@ -52,6 +52,13 @@ npm install body-parser
 npm install @overnightjs/core
 
 npm install -D @types/express
+
+npm install -D prettier
+
+yarn style:check
+
+yarn style:fix
+
 
 
 
@@ -72,10 +79,12 @@ npm run test:functional
 ------------------------------------------------------------------------------------------------
 
 
-
+warning package.json: No license field
 
 ------------------------------------------------------------------------------------------------
 
+
+https://classic.yarnpkg.com/en/docs/usage
 
 
 

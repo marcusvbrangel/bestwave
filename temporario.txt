@@ -2,11 +2,10 @@
   "name": "bestwave",
   "version": "1.0.0",
   "description": "Search for your best beach and time to surf ",
-  "main": "index.js",
-  "repository": "https://github.com/marcusvbrangel/bestwave.git",
-  "author": "Marcus Rangel <marcus.vbrangel@gmail.com>",
+  "author": "Marcus Rangel",
   "license": "MIT",
   "private": true,
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "start:dev": "ts-node-dev 'src/index.ts' ",
@@ -17,6 +16,14 @@
     "style:fix": "prettier --write 'src/**/*.ts' 'test/**/*.ts'",
     "test:functional": "jest --projects ./test --forceExit --runInBand --detectOpenHandles"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcusvbrangel/bestwave.git"
+  },  
+  "bugs": {
+    "url": "https://github.com/marcusvbrangel/bestwave/issues"
+  },
+  "homepage": "https://github.com/marcusvbrangel/bestwave#readme",
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/jest": "^27.4.1",
