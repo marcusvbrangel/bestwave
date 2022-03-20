@@ -59,7 +59,11 @@ yarn style:check
 
 yarn style:fix
 
+yarn test:unit --watch
 
+yarn add axios
+
+yarn add -D @types/axios
 
 
 
