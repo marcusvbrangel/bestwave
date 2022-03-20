@@ -1,4 +1,7 @@
 import { AxiosStatic } from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export class StormGlass {
 
@@ -12,11 +15,13 @@ export class StormGlass {
     const urlAPI = `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${this.stormGlassAPIParams}&source=${this.stormGlassAPISource}`;
     console.log("urlAPI: ", urlAPI);
     
-    return this.request.get(urlAPI, {
+    const result = this.request.get(urlAPI, {
       headers: {
-        Authorization: 'fake-token',
-      },
+        Authorization: `${process.env.STORMGLASS_API_KEY}`
+      }
     });
+    
+    return result;
     
   }
 
