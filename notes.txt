@@ -65,6 +65,10 @@ yarn add axios
 
 yarn add -D @types/axios
 
+yarn add -D dotenv
+
+yarn add -D @types/dotenv
+
 
 
 ------------------------------------------------------------------------------------------------
