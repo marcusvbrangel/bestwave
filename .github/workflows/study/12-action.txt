@@ -1,12 +1,9 @@
 name: ENV Variables
 
-on: 
-  pull_request:
-    branches:
-      - develop
+on: pull_request
 
 env:
-  WF_ENV: ${{ secrets.WF_ENV }}
+  WF_ENV: Available to all jobs
 
 jobs:
   log-env:
