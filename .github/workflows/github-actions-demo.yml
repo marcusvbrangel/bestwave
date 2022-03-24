@@ -1,17 +1,18 @@
-name: Context testing
+name: Matrix
 
-on: 
+on:
   pull_request:
     branches:
       - develop
 
 jobs:
-  functions:
+  node-version:
     runs-on: ubuntu-20.04
     steps:
-      - name: Dump
-        run: |
-          echo ${{ contains('hello', 'll') }}
-          echo ${{ startsWith('hello', 'he') }}
-          echo ${{ endsWith('hello', 'lo') }}
-          echo ${{ format('hello {0} {1} {2}', 'world', '!', '1') }}
+      - name: Log Node Version
+        run: node -v
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+      - name: Log Node Version Defined
+        run: node -v
