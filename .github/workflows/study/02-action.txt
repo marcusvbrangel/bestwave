@@ -9,10 +9,6 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-20.04
     steps:
-      - name: List Files
-        run: |
-          pwd
-          ls -la
       - name: Simple JS Action
         id: greet
         uses: actions/hello-world-javascript-action@v1
