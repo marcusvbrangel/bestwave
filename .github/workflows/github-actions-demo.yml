@@ -1,36 +1,33 @@
+name: ENV Variables
 
-# Reference: https://github.com/actions/checkout
+on: pull_request
 
-name: Actions Workflow
+env:
+  WF_ENV: Available to all jobs
 
-on: 
-  pull_request:
-    branches:
-      - develop
 jobs:
-  run-github-actions:
+  log-env:
+   runs-on: ubuntu-20.04
+   env:
+     JOB_ENV: Available to all steps in log-env job
+   steps:
+     - name: Log ENV Variables
+       env:
+         STEP_ENV: Available to only this step
+       run: |
+         echo "WF_ENV: ${WF_ENV}"
+         echo "JOB_ENV: ${JOB_ENV}"
+         echo "STEP_ENV: ${STEP_ENV}"
+     - name: Log ENV 2
+       run: |
+         echo "WF_ENV: ${WF_ENV}"
+         echo "JOB_ENV: ${JOB_ENV}"
+         echo "STEP_ENV: ${STEP_ENV}"
+  log-default-env:
     runs-on: ubuntu-20.04
     steps:
-      - name: List Files
+      - name: Default ENV Variables
         run: |
-          pwd
-          ls -la
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
-          echo $GITHUB_WORKSPACE
-          echo "${{ github.token }}"
-          # git clone git@github:$GITHUB_REPOSITORY
-          # git checkout -b $GITHUB_SHA
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-      - name: List Files After checkout
-        run: |
-          pwd
-          ls -la  
-      - name: Simple JS Action
-        id: greet
-        uses: actions/hello-world-javascript-action@v1
-        with:
-          who-to-greet: John
-      - name: Log Greeting Time
-        run: echo "${{ steps.greet.outputs.time }}"
+         echo "WF_ENV: ${WF_ENV}"
+         echo "JOB_ENV: ${JOB_ENV}"
+         echo "STEP_ENV: ${STEP_ENV}"
