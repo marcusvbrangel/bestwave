@@ -1,0 +1,17 @@
+name: Context testing
+
+on: 
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  functions:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Dump
+        run: |
+          echo ${{ contains('hello', 'll') }}
+          echo ${{ startsWith('hello', 'he') }}
+          echo ${{ endsWith('hello', 'lo') }}
+          echo ${{ format('hello {0} {1} {2}', 'world', '!', '1') }}
