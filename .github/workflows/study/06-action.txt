@@ -4,9 +4,8 @@
 name: Actions Workflow
 
 on: 
-  pull_request:
-    branches:
-      - develop
+  schedule:
+    - cron: "39 09 * * *"
 jobs:
   run-github-actions:
     runs-on: ubuntu-20.04
