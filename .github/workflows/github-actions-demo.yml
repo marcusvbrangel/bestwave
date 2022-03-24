@@ -1,3 +1,6 @@
+
+# Reference: ...
+
 name: Actions Workflow
 
 on: pull_request
@@ -12,4 +15,4 @@ jobs:
         with:
           who-to-greet: Bob
       - name: Log Greeting
-        run: echo "{{ steps.greet.outputs.time }}"
+        run: echo "${{ steps.greet.outputs.time }}"
