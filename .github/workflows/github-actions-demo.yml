@@ -1,14 +1,15 @@
-name: Shell Commands
+name: Actions Workflow
 
-on: [push, pull_request]
+on: pull_request
 
 jobs:
-  run-shell-command:
+  run-github-actions:
     runs-on: ubuntu-20.04
     steps:
-      - name: echo a string
-        run: echo "It's running fine!!!!"
-      - name: multiline script
-        run: |
-          node --version
-          npm --version
+      - name: Simple JS Action
+        id: greet
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: Bob
+      - name: Log Greeting
+        run: echo "{{ steps.greet.outputs.time }}"
