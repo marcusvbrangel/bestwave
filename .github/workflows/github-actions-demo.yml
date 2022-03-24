@@ -1,5 +1,5 @@
 
-# Reference: ...
+# Reference: https://github.com/actions/checkout
 
 name: Actions Workflow
 
@@ -13,10 +13,16 @@ jobs:
         run: |
           pwd
           ls -la
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: List Files After checkout
+        run: |
+          pwd
+          ls -la  
       - name: Simple JS Action
         id: greet
         uses: actions/hello-world-javascript-action@v1
         with:
-          who-to-greet: Bob
-      - name: Log Greeting
+          who-to-greet: John
+      - name: Log Greeting Time
         run: echo "${{ steps.greet.outputs.time }}"
