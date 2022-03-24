@@ -4,8 +4,9 @@
 name: Actions Workflow
 
 on: 
-  schedule:
-    - cron: "39 09 * * *"
+  pull_request:
+    types: [closed, assigned, opened, reopened] 
+
 jobs:
   run-github-actions:
     runs-on: ubuntu-20.04
