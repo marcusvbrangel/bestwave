@@ -6,19 +6,12 @@ on:
       - develop
 
 jobs:
-  dump_contexts_to_log:
+  functions:
     runs-on: ubuntu-20.04
     steps:
-      - name: Dump GitHub context
-        id: github_context_step
-        run: echo '${{ toJSON(github) }}'
-      - name: Dump job context
-        run: echo '${{ toJSON(job) }}'
-      - name: Dump steps context
-        run: echo '${{ toJSON(steps) }}'
-      - name: Dump runner context
-        run: echo '${{ toJSON(runner) }}'
-      - name: Dump strategy context
-        run: echo '${{ toJSON(strategy) }}'
-      - name: Dump matrix context
-        run: echo '${{ toJSON(matrix) }}'
+      - name: Dump
+        run: |
+          echo ${{ contains('hello', 'll') }}
+          echo ${{ startsWith('hello', 'he') }}
+          echo ${{ endsWith('hello', 'lo') }}
+          echo ${{ format('hello {0} {1} {2}', 'world', '!', '1') }}
