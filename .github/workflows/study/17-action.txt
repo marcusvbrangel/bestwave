@@ -1,0 +1,32 @@
+name: Context testing
+
+on: 
+  pull_request:
+    branches:
+      - develop
+  push:
+    branches:
+      - develop
+jobs:
+  functions:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Dump
+        run: |
+          echo ${{ contains('hello', 'll') }}
+          echo ${{ startsWith('hello', 'he') }}
+          echo ${{ endsWith('hello', 'lo') }}
+          echo ${{ format('hello {0} {1} {2}', 'world', '!', '1') }}
+  one:
+    runs-on: ubuntu-20.04
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Dump GitHub Context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: eccho ${GITHUB_CONTEXT}
+      - name: Dump Job Context
+        if: failure()
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
