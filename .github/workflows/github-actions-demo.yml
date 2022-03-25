@@ -31,7 +31,7 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-package-${{ hashFiles('**/yarn.lock') }}
-          restore-key: |
+          restore-keys: |
             ${{ runner.os }}-package-
 
       - name: Use NodeJS
