@@ -22,8 +22,6 @@ jobs:
         exclude:
           - os: ubuntu-latest
             node_version: 12
-          - os: macos-latest
-            node_version: 14
 
       max-parallel: 2
 
