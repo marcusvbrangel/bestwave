@@ -6,7 +6,12 @@
 name: CI
 
 on:
+
   pull_request:
+    branches:
+      - develop
+
+  push:
     branches:
       - develop
 
@@ -37,4 +42,8 @@ jobs:
           CI: true
 
       - run: npm run test:functional
+
+      - name: Build Project
+        if: github.event_name == 'push'
+        run: npm run build
 
