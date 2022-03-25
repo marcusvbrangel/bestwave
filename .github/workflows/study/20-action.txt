@@ -1,0 +1,41 @@
+name: Matrix
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+
+  node-version:
+
+    strategy:
+      matrix:
+        os: [macos-latest,ubuntu-latest,windows-latest]
+        node-version: [12,14,17]
+
+        include:
+          - os: ubuntu-latest
+            node_version: 4
+            is_ubuntu_8: "true"
+
+        exclude:
+          - os: ubuntu-latest
+            node_version: 12
+
+      max-parallel: 2
+
+    runs-on: ${{ matrix.os }}
+    env:
+      IS_UBUNTU_8: ${{ matrix.is_ubuntu_8 }}
+
+    steps:
+      - name: Log Node Version
+        run: node -v
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+      - name: Log Node Version Defined
+        run: |
+          node -v
+          echo $IS_UBUNTU_8
