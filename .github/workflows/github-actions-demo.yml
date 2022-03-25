@@ -2,6 +2,8 @@
 # https://github.com/actions/checkout
 # https://github.com/actions/setup-node
 # https://docs.npmjs.com/cli/v8/commands/npm-ci
+# https://github.com/actions/cache
+# -----------------------------------------------------------------------
 
 name: CI
 
@@ -24,6 +26,14 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-package-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-package-
 
       - name: Use NodeJS
         uses: actions/setup-node@v3
