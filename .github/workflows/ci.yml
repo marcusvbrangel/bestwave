@@ -21,8 +21,13 @@ on:
 
 jobs:
 
-  build:
+  CI:
+
     runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        node-version: ['12x', '14x', '17x']
 
     steps:  
 
@@ -40,7 +45,8 @@ jobs:
       - name: Use NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: "14"
+          #node-version: "14"
+          node-version: ${{ matrix.node_version }}
 
       #- run: npm ci
       - run: npm install
@@ -56,6 +62,6 @@ jobs:
       - run: npm run test:functional
 
       - name: Build Project
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && matrix.node_version == '14x'
         run: npm run build
 
