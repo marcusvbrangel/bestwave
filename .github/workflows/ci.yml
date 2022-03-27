@@ -56,6 +56,6 @@ jobs:
       - run: npm run test:functional
 
       - name: Build Project
-        if: github.event_name == 'push'
+        if: github.event_name == 'push_request'
         run: npm run build
 
