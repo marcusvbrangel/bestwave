@@ -36,7 +36,6 @@ jobs:
           key: ${{ runner.os }}-package-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-package-
-
       - name: Use NodeJS
         uses: actions/setup-node@v3
         with:
@@ -58,4 +57,3 @@ jobs:
       - name: Build Project
         if: github.event_name == 'push_request'
         run: npm run build
-
