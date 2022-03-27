@@ -21,15 +21,8 @@ on:
 
 jobs:
 
-  CI:
-
+  build:
     runs-on: ubuntu-20.04
-
-    # strategy:
-      # matrix:
-        # node-version: ['14', '16', '17']
-
-    # name: Node ${{ matrix.node-version }}
 
     steps:  
 
@@ -43,12 +36,10 @@ jobs:
           key: ${{ runner.os }}-package-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-package-
-
       - name: Use NodeJS
         uses: actions/setup-node@v3
         with:
           node-version: "14"
-          # node-version: ${{ matrix.node-version }}
 
       #- run: npm ci
       - run: npm install
@@ -66,4 +57,3 @@ jobs:
       - name: Build Project
         if: github.event_name == 'push_request'
         run: npm run build
-
