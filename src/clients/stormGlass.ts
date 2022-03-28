@@ -58,34 +58,33 @@ export class StormGlass {
   constructor(protected request: AxiosStatic) {}
 
   public async fetchPoints(lat: number, lng: number): Promise<ForecastPoint[]> {
-
     try {
       const urlAPI = `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${this.stormGlassAPIParams}&source=${this.stormGlassAPISource}`;
-  
+
       console.log('urlAPI: ', urlAPI);
-  
+
       const response = await this.request.get<StormGlassForecastResponse>(
         urlAPI,
         {
           headers: {
             // Authorization: `${process.env.STORMGLASS_API_KEY}`,
-            Authorization: "fake-token",
+            Authorization: 'fake-token',
           },
         }
       );
-  
+
       return this.normalizeResponse(response.data);
-      
     } catch (err: any) {
-
       if (err.response && err.response.status) {
-        throw new StormGlassResponseError(`Error: ${JSON.stringify(err.response.data)} Code: ${err.response.status}`);
+        throw new StormGlassResponseError(
+          `Error: ${JSON.stringify(err.response.data)} Code: ${
+            err.response.status
+          }`
+        );
       }
-
 
       throw new ClientRequestError((err as { message: any }).message);
     }
-
   }
 
   private normalizeResponse(

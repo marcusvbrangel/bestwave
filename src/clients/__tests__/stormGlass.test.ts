@@ -22,8 +22,7 @@ describe('StormGlass client', () => {
     expect(response).toEqual(stormGlassNormalized3HoursFixture);
   });
 
-  it("should exclude incomplete data points", async () => {
-
+  it('should exclude incomplete data points', async () => {
     const lat = -33.792726;
     const lng = 151.289824;
 
@@ -33,18 +32,17 @@ describe('StormGlass client', () => {
           windDirection: {
             noaa: 300,
           },
-          time: "2020-04-26T00:00:00+00:00",
-        }
-      ]
-    }
+          time: '2020-04-26T00:00:00+00:00',
+        },
+      ],
+    };
 
-    mockedAxios.get.mockResolvedValue({ data: incompleteResponse});
+    mockedAxios.get.mockResolvedValue({ data: incompleteResponse });
 
     const stormGlass = new StormGlass(mockedAxios);
     const response = await stormGlass.fetchPoints(lat, lng);
 
-    expect(response).toEqual([])
-
+    expect(response).toEqual([]);
   });
 
   it('should get a generic error from StormGlass service when the request fail before reaching the service', async () => {
@@ -68,7 +66,7 @@ describe('StormGlass client', () => {
       response: {
         status: 429,
         data: { errors: ['Rate Limit reached'] },
-      }
+      },
     });
 
     const stormGlass = new StormGlass(mockedAxios);
@@ -77,5 +75,4 @@ describe('StormGlass client', () => {
       'Unexpected error returned by the StormGlass service: Error: {"errors":["Rate Limit reached"]} Code: 429'
     );
   });
-
 });
