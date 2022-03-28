@@ -34,7 +34,6 @@ export interface ForecastPoint {
 }
 
 export class StormGlass {
-
   readonly stormGlassAPIParams =
     'swellDirection,swellHeight,swellPeriod,waveDirection,waveHeight,windDirection,windSpeed';
   readonly stormGlassAPISource = 'noaa';
@@ -42,29 +41,30 @@ export class StormGlass {
   constructor(protected request: AxiosStatic) {}
 
   public async fetchPoints(lat: number, lng: number): Promise<ForecastPoint[]> {
-
     const urlAPI = `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${this.stormGlassAPIParams}&source=${this.stormGlassAPISource}`;
-    
+
     console.log('urlAPI: ', urlAPI);
 
-    const response = await this.request.get<StormGlassForecastResponse>(urlAPI, {
-      headers: {
-        Authorization: `${process.env.STORMGLASS_API_KEY}`,
-      },
-    });
+    const response = await this.request.get<StormGlassForecastResponse>(
+      urlAPI,
+      {
+        headers: {
+          Authorization: `${process.env.STORMGLASS_API_KEY}`,
+        },
+      }
+    );
 
     return this.normalizeResponse(response.data);
-
   }
 
-  private normalizeResponse(points: StormGlassForecastResponse): ForecastPoint[] {
-
+  private normalizeResponse(
+    points: StormGlassForecastResponse
+  ): ForecastPoint[] {
     const result = points.hours
 
       .filter((hour) => this.isValidPoint(hour))
 
       .map((point) => ({
-
         time: point.time,
         swellDirection: point.swellDirection[this.stormGlassAPISource],
         swellHeight: point.swellHeight[this.stormGlassAPISource],
@@ -73,16 +73,13 @@ export class StormGlass {
         waveHeight: point.waveHeight[this.stormGlassAPISource],
         windDirection: point.windDirection[this.stormGlassAPISource],
         windSpeed: point.windSpeed[this.stormGlassAPISource],
-
-      }))
+      }));
 
     return result;
-
   }
 
-  private isValidPoint(point: Partial<StormGlassPoint>): boolean{
-
-    return !! (
+  private isValidPoint(point: Partial<StormGlassPoint>): boolean {
+    return !!(
       point.time &&
       point.swellDirection?.[this.stormGlassAPISource] &&
       point.swellHeight?.[this.stormGlassAPISource] &&
@@ -92,7 +89,5 @@ export class StormGlass {
       point.windDirection?.[this.stormGlassAPISource] &&
       point.windSpeed?.[this.stormGlassAPISource]
     );
-
   }
-
 }
